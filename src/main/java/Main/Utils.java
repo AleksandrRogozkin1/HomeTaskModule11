@@ -9,6 +9,7 @@ public class Utils {
 
     public static String task1(List<String> strings){
         return strings.stream()
+                .map(str -> strings.indexOf(str) + 1 +". "+ str)
                 .filter(str -> strings.indexOf(str)%2 != 0)
                 .collect(Collectors.joining(", "));
     }
