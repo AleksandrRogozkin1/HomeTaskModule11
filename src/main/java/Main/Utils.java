@@ -10,7 +10,7 @@ public class Utils {
     public static String task1(List<String> strings){
         return strings.stream()
                 .filter(str -> strings.indexOf(str)%2 != 0)
-                .collect(Collectors.joining(" "));
+                .collect(Collectors.joining(", "));
     }
     public static List<String> task2(List<String> strings){
         return strings
