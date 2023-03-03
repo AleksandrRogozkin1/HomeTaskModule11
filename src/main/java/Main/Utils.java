@@ -1,10 +1,7 @@
 package Main;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,20 +19,28 @@ public class Utils {
                 .sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
     }
-    public static String task3(String[] strings){
-        List<String> list = new ArrayList<>();
-        return Arrays.stream(strings)
+    public static String task3(List<String> numbers){
+
+        return numbers.stream()
                 .flatMap(str -> Arrays.stream(str.split(", ")))
                 .sorted()
                 .collect(Collectors.joining(", "));
     }
-    public static Stream<Long> task4(long a, long c,long m,int size){
+    public static List<Long> task4(long a, long c,long m,int size){
         long seed = System.currentTimeMillis();
-        return Stream
+        return  Stream
                 .iterate(seed, previous -> (a * previous + c) % m)
-                .limit(size);
-
+                .limit(size)
+                .collect(Collectors.toList());
     }
-
-
+    public static <T> Stream<T> zip(Stream<T> first, Stream<T> second){
+        List<T>res=new ArrayList<>();
+        Iterator <T> iterator1=first.iterator();
+        Iterator <T> iterator2=second.iterator();
+        while (iterator2.hasNext()&& iterator2.hasNext()){
+            res.add(iterator2.next());
+            res.add(iterator1.next());
+        }
+        return res.stream();
+    }
 }
