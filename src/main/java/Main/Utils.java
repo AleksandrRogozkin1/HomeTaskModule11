@@ -9,8 +9,8 @@ public class Utils {
 
     public static String task1(List<String> strings){
         return strings.stream()
-                .map(str -> strings.indexOf(str) + 1 +". "+ str)
                 .filter(str -> strings.indexOf(str)%2 != 0)
+                .map(str -> strings.indexOf(str)  +". "+ str)
                 .collect(Collectors.joining(", "));
     }
     public static List<String> task2(List<String> strings){
